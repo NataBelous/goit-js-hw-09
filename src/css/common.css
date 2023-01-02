@@ -18,42 +18,47 @@ img {
 }
 
 button {
-padding: 10px 20px;
-margin: 10px;
-font-size: 20px;
-border: none;
-border-radius: 5px;
-background-color: rgb(99, 94, 94);
-color: #fff;
-cursor: pointer;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(99, 94, 94);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 .color-switcher {
-display: flex;
-align-items: center;
-justify-content: center;
-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .field {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
 }
 
 .timer {
-display: flex;
-margin-top: 20px;
+  display: flex;
+  margin-top: 20px;
 }
 
 .form {
   display: flex;
 }
 
-.label-form {
-display: flex;
-flex-direction: column;
+label {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }
-  

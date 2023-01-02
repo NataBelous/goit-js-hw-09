@@ -22,29 +22,40 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
+function padStart(value) {
+  return String(value).padStart(2, '0');
+}
+
 const daysRef = document.querySelector('span[data-days]');
 const hoursRef = document.querySelector('span[data-hours]');
 const minsRef = document.querySelector('span[data-minutes]');
 const secsRef = document.querySelector('span[data-seconds]');
 const startBtn = document.querySelector('button[data-start]');
+const pickerRef = document.querySelector('#datetime-picker');
 
 let timerId = null;
 let targetDate = null;
 
 startBtn.addEventListener('click', () => {
   startBtn.disabled = true;
+  pickerRef.disabled = true;
   timerId = setInterval(() => {
     const currentTime = Date.now();
     const deltaTime = targetDate - currentTime;
+    if (deltaTime <= 0) {
+      clearInterval(timerId);
+      startBtn.disabled = false;
+      pickerRef.disabled = false;
+      Notify.success('🎉 Countdown is over! 🎉');
+      return;
+    }
     const time = convertMs(deltaTime);
-    daysRef.textContent = time.days;
-    hoursRef.textContent = time.hours;
-    minsRef.textContent = time.minutes;
-    secsRef.textContent = time.seconds;
+    daysRef.textContent = padStart(time.days);
+    hoursRef.textContent = padStart(time.hours);
+    minsRef.textContent = padStart(time.minutes);
+    secsRef.textContent = padStart(time.seconds);
   }, 1000);
 });
-
-startBtn.disabled = true;
 
 const options = {
   enableTime: true,
